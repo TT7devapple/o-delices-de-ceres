@@ -8,372 +8,306 @@
 <meta name="description" content="O Délices de Cérès, boulangerie-pâtisserie à Vincennes : pains, viennoiseries, pâtisseries, pièces montées, formule déjeuner.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
 <style>
   :root {
-    --ground: #F6F4EF;
-    --surface: #FFFFFF;
-    --ink: #33241A;
-    --muted: #6E5E52;
-    --line: #E0D8CC;
-    --accent: #A8621D;
-    --accent-ink: #FFFFFF;
-    --accent2: #C28A2E;
-    --ok: #2C6E43;
-    --closed: #A63A2A;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-    --ground: #17120E;
-    --surface: #221A14;
-    --ink: #F1EAE2;
-    --muted: #B5A698;
-    --line: #3A2E24;
-    --accent: #E5A35C;
-    --accent-ink: #1C1005;
-    --accent2: #E3B866;
-    --ok: #7CC895;
-    --closed: #EE8A78;
-    }
-  }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --ground: #17120E;
-    --surface: #221A14;
-    --ink: #F1EAE2;
-    --muted: #B5A698;
-    --line: #3A2E24;
-    --accent: #E5A35C;
-    --accent-ink: #1C1005;
-    --accent2: #E3B866;
-    --ok: #7CC895;
-    --closed: #EE8A78;
-  }
-  :root {
-    --display: "Marcellus", "Trajan Pro", Georgia, serif;
-    --body: "Nunito Sans", "Segoe UI", Arial, sans-serif;
-    --r: 10px;
-    --btn-r: 999px;
+    color-scheme: light;
+    --flour: #F6F1E7; --crust: #7A4318; --crust-2: #5A3012; --gold: #E0A13A; --wheat: #EBCB8B; --ink: #2E1F14; --muted: #6F5D4E; --line: #E3D7C3;
+    --roman: "Cinzel", "Trajan Pro", Georgia, serif; --ital: "Cormorant Garamond", Garamond, Georgia, serif; --sans: "Nunito Sans", "Segoe UI", Arial, sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
-  body { margin: 0; background: var(--ground); color: var(--ink); font: 400 1rem/1.65 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  .wrap { max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+  body { margin: 0; background: var(--flour); color: var(--ink); font: 400 1.02rem/1.7 var(--sans); overflow-x: hidden; }
+  .wrap { max-width: 1140px; margin-inline: auto; padding-inline: 20px; }
   a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-  h1, h2, h3 { font-family: var(--display); font-weight: 400; text-transform: none; letter-spacing: 0.02em; line-height: 1.05; margin: 0; text-wrap: balance; }
-  h1 em, h2 em { font-style: italic; color: var(--accent); }
-  .label { font: 600 .74rem/1.2 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  h1, h2, h3 { font-family: var(--roman); margin: 0; line-height: 1.05; text-wrap: balance; letter-spacing: .04em; }
+  .it { font-family: var(--ital); font-style: italic; letter-spacing: 0; }
+  .proto { background: var(--crust-2); color: var(--flour); font: 600 .74rem/1.4 var(--sans); letter-spacing: .06em; text-align: center; padding: 8px 16px; }
 
-  .proto { background: var(--ink); color: var(--ground); font: 500 .74rem/1.4 var(--body); letter-spacing: .06em; text-align: center; padding: 8px 16px; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--line); }
+  .logo { font: 700 1.05rem/1 var(--roman); letter-spacing: .14em; text-decoration: none; color: var(--crust); }
+  nav { display: flex; gap: 26px; font-size: .95rem; }
+  nav a { text-decoration: none; color: var(--muted); } nav a:hover { color: var(--crust); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font: 700 .95rem/1 var(--sans); text-decoration: none; background: var(--crust); color: var(--flour); border: 2px solid var(--crust); cursor: pointer; }
+  .btn.line { background: transparent; color: var(--crust); }
+  .btn:hover { background: var(--crust-2); border-color: var(--crust-2); color: var(--flour); }
+  @media (max-width: 760px) { nav { display: none; } }
 
-  header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--ground) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
-  .brand { text-decoration: none; font-family: var(--display); font-weight: 400; text-transform: none; font-size: 1.3rem; line-height: 1; display: flex; align-items: center; gap: 10px; }
-  nav.links { display: flex; gap: 24px; }
-  nav.links a { text-decoration: none; font-weight: 500; font-size: .95rem; color: var(--muted); }
-  nav.links a:hover { color: var(--ink); }
-  .btn { display: inline-flex; align-items: center; gap: 8px; border: 2px solid var(--ink); background: var(--ink); color: var(--ground); font: 600 .95rem/1 var(--body); padding: 12px 20px; text-decoration: none; cursor: pointer; border-radius: var(--btn-r); transition: transform .15s ease; }
-  .btn:hover { transform: translateY(-1px); }
-  .btn.ghost { background: transparent; color: var(--ink); }
-  .btn.accent { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-  @media (max-width: 760px) { nav.links { display: none; } header.top .btn { padding: 10px 14px; font-size: .88rem; } }
-
-  /* Hero */
-  .hero { position: relative; overflow: hidden; padding-block: clamp(44px, 7vw, 96px); }
-  .hero .motif { position: absolute; right: -40px; top: 50%; width: clamp(260px, 38vw, 520px); transform: translateY(-50%); color: var(--accent2); opacity: .16; pointer-events: none; }
-  .hero .motif svg { width: 100%; height: auto; display: block; }
-  .hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
-  .hero h1 { font-size: clamp(2.8rem, 8vw, 6.4rem); }
-  .hero .lede { font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: 42ch; margin: 22px 0 28px; }
+  /* Hero : vitrine en arche */
+  .hero { padding-block: clamp(36px, 6vw, 70px) clamp(50px, 7vw, 90px); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .arch { position: relative; aspect-ratio: 4 / 5; max-width: 460px; width: 100%; border-radius: 230px 230px 10px 10px; overflow: hidden; background: linear-gradient(180deg, #F7D58F 0%, #E9A74A 45%, #B8662A 100%); border: 10px solid var(--crust); box-shadow: 0 30px 60px -30px rgba(90,48,18,.7); justify-self: center; }
+  .arch .sun { position: absolute; left: 50%; top: 22%; width: 46%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #FFF3D1 0%, #FBD98A 60%, transparent 70%); transform: translateX(-50%); animation: rise 3s ease-out both; }
+  @keyframes rise { from { transform: translate(-50%, 40%); opacity: .3; } to { transform: translate(-50%, 0); opacity: 1; } }
+  .arch svg { position: absolute; bottom: 0; left: 0; width: 100%; height: auto; }
+  .arch .since { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); font: 700 .74rem/1 var(--roman); letter-spacing: .3em; color: var(--crust-2); }
+  .kicker { font: 700 .78rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--crust); }
+  .hero h1 { font-size: clamp(2.6rem, 6.6vw, 5.2rem); color: var(--crust-2); margin: 18px 0 0; font-weight: 800; }
+  .hero h1 .it { display: block; color: var(--gold); font-size: .75em; font-weight: 600; margin-top: 6px; }
+  .hero p { font-size: 1.12rem; max-width: 42ch; color: var(--muted); margin: 22px 0 28px; }
   .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px 22px 20px; display: grid; gap: 14px; font-size: .95rem; box-shadow: 0 18px 40px -30px rgba(0,0,0,.45); }
-  .card .row { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
-  .card .row:last-child { border-bottom: 0; padding-bottom: 0; }
-  .card .row > span:first-child { color: var(--muted); }
-  .card .row > span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
-  .status { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
-  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
-  .status.open { color: var(--ok); }
-  .status.shut { color: var(--closed); }
-  /* Variante : nom en très grand, carte en dessous */
-  .hero.stacked .wrap { grid-template-columns: 1fr; }
-  .hero.stacked h1 { font-size: clamp(3.2rem, 11vw, 9rem); }
-  .hero.stacked .card { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 28px; }
-  .hero.stacked .card .row { flex-direction: column; gap: 4px; border-bottom: 0; padding-bottom: 0; }
-  .hero.stacked .card .row > span:last-child { text-align: left; }
-  /* Variante : bandeau plein en couleur d'accent */
-  .hero.band { background: var(--accent); color: var(--accent-ink); }
-  .hero.band .label, .hero.band .lede { color: var(--accent-ink); }
-  .hero.band h1 em { color: var(--accent-ink); opacity: .75; }
-  .hero.band .motif { color: var(--accent-ink); opacity: .12; }
-  .hero.band .btn { border-color: var(--accent-ink); background: var(--accent-ink); color: var(--accent); }
-  .hero.band .btn.ghost { background: transparent; color: var(--accent-ink); }
-  .hero.band .card { color: var(--ink); }
-  @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } .hero .motif { opacity: .08; } }
+  .now { margin-top: 24px; font-size: .95rem; }
+  [data-status] { font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+  [data-status]::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+  [data-status].open { color: #2F7A48; } [data-status].shut { color: #A8412B; }
+  @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } .arch { max-width: 340px; order: -1; } }
 
-  section.block { padding-block: clamp(60px, 8vw, 104px); }
-  .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: end; margin-bottom: 40px; }
-  .sec-head h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
-  .sec-head p { margin: 0; color: var(--muted); max-width: 46ch; justify-self: end; }
-  @media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; } .sec-head p { justify-self: start; } }
+  /* Journée du fournil */
+  .fournil { background: var(--crust-2); color: var(--flour); padding-block: clamp(56px, 7vw, 90px); }
+  .fournil h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); }
+  .fournil h2 .it { color: var(--wheat); }
+  .fournil .sub { color: #D9C6AE; margin: 14px 0 40px; max-width: 54ch; }
+  .track { position: relative; height: 16px; border-radius: 999px; background: linear-gradient(90deg, #F7D58F, var(--gold) 50%, #B8662A); margin: 50px 0 16px; }
+  .track .mark { position: absolute; top: 50%; width: 26px; height: 26px; border-radius: 50%; background: var(--flour); border: 4px solid var(--crust-2); box-shadow: 0 0 0 3px var(--wheat); transform: translate(-50%, -50%); }
+  .track .mark::after { content: attr(data-label); position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); white-space: nowrap; font: 700 .8rem/1 var(--sans); background: var(--flour); color: var(--crust-2); padding: 6px 10px; border-radius: 999px; }
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  .steps div b { display: block; font: 700 1.6rem/1 var(--roman); color: var(--wheat); }
+  .steps div span { color: #D9C6AE; font-size: .95rem; }
+  @media (max-width: 700px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-  /* Offre : liste façon carte */
-  .menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
-  .item { padding-block: 20px; border-bottom: 1px solid var(--line); }
-  .item .line { display: flex; align-items: baseline; gap: 12px; }
-  .item h3 { font-size: 1.45rem; }
-  .item .dots { flex: 1; border-bottom: 2px dotted var(--line); transform: translateY(-5px); min-width: 20px; }
-  .item .for { font: 600 .72rem/1.2 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
-  .item p { margin: 6px 0 0; color: var(--muted); max-width: 48ch; }
-  @media (max-width: 760px) { .menu { grid-template-columns: 1fr; } .item .for { white-space: normal; text-align: right; } }
-  /* Offre : grille */
-  .services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; }
-  .services .svc { display: grid; gap: 8px; align-content: start; }
-  .services.grid .svc { border-top: 2px solid var(--ink); padding-top: 18px; }
-  .services.tiles .svc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; }
-  .svc .for { font: 600 .72rem/1.2 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
-  .svc h3 { font-size: 1.5rem; }
-  .svc p { margin: 0; color: var(--muted); }
-  @media (max-width: 900px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
-  .note { margin: 28px 0 0; color: var(--muted); max-width: 70ch; }
-  .note b { color: var(--ink); }
+  /* Vitrine : étiquettes sur pique */
+  .vitrine { padding-block: clamp(64px, 8vw, 110px); }
+  .head { text-align: center; margin-bottom: 50px; }
+  .head h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--crust-2); }
+  .head h2 .it { color: var(--gold); }
+  .head p { color: var(--muted); max-width: 52ch; margin: 14px auto 0; }
+  .shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 46px 28px; }
+  .item { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 30px 24px 24px; text-align: center; }
+  .item .pick { position: absolute; top: -26px; left: 50%; transform: translateX(-50%) rotate(-4deg); background: #fff; border: 1.5px solid var(--ink); padding: 6px 12px; font: 700 .9rem/1 var(--sans); white-space: nowrap; }
+  .item .pick::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1.5px; height: 14px; background: var(--ink); }
+  .item .pick.gold { background: var(--gold); border-color: var(--crust-2); }
+  .item svg { width: 64px; height: 64px; color: var(--crust); margin: 8px auto 6px; display: block; }
+  .item h3 { font-size: 1.3rem; color: var(--crust-2); }
+  .item p { margin: 8px 0 0; color: var(--muted); font-size: .95rem; }
+  @media (max-width: 900px) { .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .shelf { grid-template-columns: 1fr; } }
 
-  /* Bandeau signature */
-  .signature { background: var(--ink); color: var(--ground); }
-  .signature .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 5vw, 64px); align-items: center; padding-block: clamp(44px, 6vw, 72px); }
-  .sig-motif { width: clamp(90px, 13vw, 150px); color: var(--accent2); }
-  .sig-motif svg { width: 100%; height: auto; display: block; }
-  .signature h2 { font-size: clamp(2rem, 5vw, 3.6rem); }
-  .signature h2 em { color: var(--accent2); }
-  .signature p { margin: 14px 0 0; max-width: 56ch; font-size: 1.08rem; color: color-mix(in srgb, var(--ground) 80%, var(--ink)); }
-  @media (max-width: 600px) { .signature .wrap { grid-template-columns: 1fr; } }
+  /* Commandes */
+  .order { background: var(--wheat); padding-block: clamp(56px, 7vw, 96px); }
+  .order .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+  .order h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--crust-2); }
+  .order h2 .it { color: var(--crust); }
+  .order p { color: #4E3A28; font-size: 1.08rem; max-width: 48ch; }
+  .order ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .order li { background: var(--flour); border-radius: 14px; padding: 16px 20px; display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
+  .order li b { font: 700 1.05rem/1.2 var(--roman); color: var(--crust-2); letter-spacing: .04em; }
+  .order li span { color: var(--muted); font-size: .9rem; text-align: right; }
+  @media (max-width: 760px) { .order .wrap { grid-template-columns: 1fr; } }
 
-  /* Avis */
-  .reviews { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
-  .score { font: 400 clamp(4.5rem, 12vw, 8rem)/.85 var(--display); font-variant-numeric: tabular-nums; }
+  .avis { padding-block: clamp(56px, 7vw, 96px); }
+  .avis .wrap { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 40px; align-items: start; }
+  .score { font: 800 clamp(4.5rem, 12vw, 7rem)/.9 var(--roman); color: var(--gold); }
   .score small { font-size: .35em; color: var(--muted); }
-  .quotes figure { margin: 0; padding-block: 22px; border-bottom: 1px solid var(--line); }
-  .quotes figure:first-child { padding-top: 0; }
-  .quotes blockquote { margin: 0; font: italic 500 clamp(1.25rem, 2.4vw, 1.7rem)/1.35 var(--display); text-transform: none; text-wrap: pretty; }
-  .quotes figcaption { margin-top: 10px; font-size: .82rem; color: var(--muted); letter-spacing: .03em; }
-  @media (max-width: 760px) { .reviews { grid-template-columns: 1fr; } }
+  figure { margin: 0 0 26px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  blockquote { margin: 0; font: italic 500 clamp(1.4rem, 2.6vw, 1.9rem)/1.3 var(--ital); color: var(--crust-2); }
+  figcaption { margin-top: 10px; color: var(--muted); font-size: .88rem; }
+  @media (max-width: 760px) { .avis .wrap { grid-template-columns: 1fr; } }
 
-  /* Horaires + accès */
-  #venir { border-top: 1px solid var(--line); }
-  .visit { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); }
-  .hours-wrap { overflow-x: auto; }
-  .hours { width: 100%; border-collapse: collapse; font-size: .95rem; font-variant-numeric: tabular-nums; }
-  .hours td { padding: 13px 0; border-bottom: 1px solid var(--line); }
-  .hours td + td { text-align: right; padding-left: 16px; }
-  .hours tr.today td { color: var(--accent); font-weight: 600; }
-  .hours tr.today td:first-child::after { content: " ·\00a0aujourd'hui"; font-size: .75rem; }
-  .hours tr.off td + td { color: var(--muted); }
-  .nohours { background: var(--surface); border: 1px dashed var(--line); border-radius: var(--r); padding: 24px; align-self: start; }
-  .nohours p { margin: 0; color: var(--muted); }
-  .contact { display: grid; gap: 24px; align-content: start; }
-  .contact .big { font: 400 clamp(1.8rem, 3.6vw, 2.5rem)/1.05 var(--display); text-transform: none; }
-  .phone-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-  .phone { font-weight: 600; font-size: clamp(1.4rem, 3vw, 1.8rem); user-select: all; font-variant-numeric: tabular-nums; }
-  .copy { font: 600 .8rem/1 var(--body); background: transparent; color: var(--ink); border: 1px solid var(--line); padding: 8px 12px; cursor: pointer; border-radius: var(--btn-r); }
-  .copy:hover { border-color: var(--ink); }
-  .perks { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
-  .perks li { font-size: .82rem; font-weight: 500; border: 1px solid var(--line); padding: 7px 11px; border-radius: 999px; color: var(--muted); }
-  .transit { margin: 0; color: var(--muted); font-size: .95rem; }
-  @media (max-width: 760px) { .visit { grid-template-columns: 1fr; } }
-
-  footer.site { border-top: 1px solid var(--line); padding-block: 28px 40px; }
-  footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; color: var(--muted); font-size: .88rem; }
-  footer.site b { color: var(--ink); font-family: var(--display); font-weight: 400; text-transform: none; font-size: 1.1rem; }
-
-  @keyframes rise { from { transform: translateY(12px); } to { transform: none; } }
-  .hero h1, .hero .lede, .hero .ctas, .hero .card { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
-  .hero .lede { animation-delay: .06s; } .hero .ctas { animation-delay: .12s; } .hero .card { animation-delay: .18s; }
+  .visit { background: #fff; border-top: 1px solid var(--line); padding-block: clamp(56px, 7vw, 96px); }
+  .visit .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 72px); }
+  .visit h2 { font-size: clamp(2rem, 4.6vw, 3rem); color: var(--crust-2); margin-bottom: 22px; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  td { padding: 12px 0; border-bottom: 1px solid var(--line); } td + td { text-align: right; }
+  tr.today td { color: var(--crust); font-weight: 700; } tr.off td + td { color: var(--muted); }
+  .addr { font: 700 clamp(1.5rem, 3vw, 2rem)/1.2 var(--roman); color: var(--crust-2); letter-spacing: .04em; }
+  .lbl { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .stack { display: grid; gap: 22px; align-content: start; }
+  .phone { font: 700 1.6rem/1 var(--sans); user-select: all; }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+  .chips li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .85rem; color: var(--muted); }
+  @media (max-width: 760px) { .visit .wrap { grid-template-columns: 1fr; } }
+  footer { background: var(--crust-2); color: #D9C6AE; padding-block: 24px 34px; font-size: .88rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
 </style>
 </head>
 <body>
-
 <div class="proto">Maquette — proposition de site pour O Délices de Cérès</div>
-
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#top">O Délices de Cérès</a>
-    <nav class="links" aria-label="Navigation principale"><a href="#offre">La boutique</a><a href="#avis">Avis</a><a href="#venir">Horaires &amp; accès</a></nav>
-    <a class="btn" href="tel:+33143281609">01 43 28 16 09</a>
-  </div>
-</header>
+<header><div class="wrap">
+  <a class="logo" href="#top">O Délices de Cérès</a>
+  <nav aria-label="Navigation principale"><a href="#vitrine">La vitrine</a><a href="#commandes">Commandes</a><a href="#venir">Venir</a></nav>
+  <a class="btn" href="tel:+33143281609">01 43 28 16 09</a>
+</div></header>
 
 <main id="top">
-  <section class="hero stacked">
-    <div class="motif" aria-hidden="true"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M100 190V30"/><path d="M100 40c-14-4-18-18-14-28 12 4 16 16 14 28Zm0 0c14-4 18-18 14-28-12 4-16 16-14 28Z"/><path d="M100 70c-18-2-26-18-22-30 16 4 22 16 22 30Zm0 0c18-2 26-18 22-30-16 4-22 16-22 30Z"/><path d="M100 102c-18-2-26-18-22-30 16 4 22 16 22 30Zm0 0c18-2 26-18 22-30-16 4-22 16-22 30Z"/><path d="M100 134c-18-2-26-18-22-30 16 4 22 16 22 30Zm0 0c18-2 26-18 22-30-16 4-22 16-22 30Z"/></svg></div>
+  <section class="hero">
     <div class="wrap">
       <div>
-        <div class="label" style="margin-bottom:18px">Boulangerie · Pâtisserie · Vincennes</div>
-        <h1>O Délices <em>de Cérès</em></h1>
-        <p class="lede">Pains, viennoiseries et pâtisseries, du lundi au vendredi dès 7h. Et pour vos fêtes : pièces montées, petits-fours et chocolats.</p>
-        <div class="ctas">
-          <a class="btn accent" href="#offre">Découvrir</a>
-          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=O+Délices+de+Cérès+39+avenue+de+Paris+94300+Vincennes" target="_blank" rel="noopener">Itinéraire</a>
-        </div>
+        <div class="kicker">Boulangerie · Pâtisserie · Vincennes</div>
+        <h1>O Délices de Cérès <span class="it">le bon pain de chaque jour</span></h1>
+        <p>Pains, viennoiseries et pâtisseries, du lundi au vendredi dès 7h. Et pour vos fêtes&nbsp;: pièces montées, petits-fours et chocolats de saison.</p>
+        <div class="ctas"><a class="btn" href="#vitrine">Voir la vitrine</a><a class="btn line" href="#commandes">Passer commande</a></div>
+        <div class="now">En ce moment&nbsp;: <span data-status>—</span></div>
       </div>
-      <aside class="card" aria-label="Infos pratiques">
-        <div class="row"><span>En ce moment</span><span class="status" id="status">—</span></div>
-        <div class="row"><span>Adresse</span><span>39 avenue de Paris<br>94300 Vincennes</span></div>
-        <div class="row"><span>Téléphone</span><span>01 43 28 16 09</span></div>
-        <div class="row"><span>Baguette</span><span>dès 0,95 €</span></div>
-        <div class="row"><span>Formule déjeuner</span><span>dès 6,50 €</span></div>
-      </aside>
+      <div class="arch" aria-hidden="true">
+        <div class="since">DEPUIS 2014</div>
+        <div class="sun"></div>
+        <svg viewBox="0 0 400 260" fill="none" stroke="#5A3012" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <g fill="#F6D9A0">
+            <path d="M20 250c10-70 70-110 150-110s130 40 140 110Z"/>
+          </g>
+          <path d="M70 200c20-14 40-14 60 0M140 176c20-14 40-14 60 0M210 186c20-14 40-14 60 0" />
+          <g stroke="#7A4318">
+            <path d="M330 250V70"/><path d="M330 90c-12-4-16-16-12-26 10 4 14 14 12 26Zm0 0c12-4 16-16 12-26-10 4-14 14-12 26Z"/>
+            <path d="M330 130c-16-2-24-16-20-28 14 4 20 14 20 28Zm0 0c16-2 24-16 20-28-14 4-20 14-20 28Z"/>
+            <path d="M360 250V110"/><path d="M360 130c-12-4-16-16-12-26 10 4 14 14 12 26Zm0 0c12-4 16-16 12-26-10 4-14 14-12 26Z"/>
+          </g>
+        </svg>
+      </div>
     </div>
   </section>
 
-  <section class="block" id="offre">
+  <section class="fournil" aria-label="La journée">
     <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="label" style="margin-bottom:14px">En vitrine</div>
-          <h2>Du four <em>au comptoir</em></h2>
-        </div>
-        <p>Ce que vous trouvez chaque jour en boutique, et ce que l&#x27;on prépare sur commande.</p>
+      <h2>La journée <span class="it">du fournil</span></h2>
+      <p class="sub">Du lundi au vendredi, sans interruption de 7h à 20h30. Le point doré, c'est maintenant.</p>
+      <div class="track" id="track"><div class="mark" id="mark" data-label="Maintenant" hidden></div></div>
+      <div class="steps">
+        <div><b>7h</b><span>Ouverture, viennoiseries chaudes</span></div>
+        <div><b>12h</b><span>Formule déjeuner dès 6,50 €</span></div>
+        <div><b>16h</b><span>Le goûter</span></div>
+        <div><b>20h30</b><span>Le pain du soir, et à demain</span></div>
       </div>
-      <div class="services grid">
-<article class="svc"><span class="for">Chaque jour</span><h3>Pains</h3><p>Baguettes et pains variés, à partir de 0,95 €.</p></article>
-<article class="svc"><span class="for">Le matin</span><h3>Viennoiseries</h3><p>Croissants, pains au chocolat, pains aux raisins.</p></article>
-<article class="svc"><span class="for">Vitrine</span><h3>Pâtisseries</h3><p>Gâteaux individuels et entremets, avec des options sans sucre.</p></article>
-<article class="svc"><span class="for">Midi</span><h3>Formule déjeuner</h3><p>Sandwich, boisson et dessert, à partir de 6,50 €.</p></article>
-<article class="svc"><span class="for">Sur commande</span><h3>Petits-fours</h3><p>Sucrés ou salés, pour vos apéritifs et réceptions.</p></article>
-<article class="svc"><span class="for">Sur commande</span><h3>Pièces montées</h3><p>Pour les mariages, baptêmes et grandes occasions.</p></article>
-      </div>
-      <p class="note"><b>Service traiteur</b> et chocolats de Noël et de Pâques selon la saison. Passez commande en boutique ou par téléphone.</p>
     </div>
   </section>
 
-  <section class="signature">
+  <section class="vitrine" id="vitrine">
     <div class="wrap">
-      <div class="sig-motif" aria-hidden="true"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M100 190V30"/><path d="M100 40c-14-4-18-18-14-28 12 4 16 16 14 28Zm0 0c14-4 18-18 14-28-12 4-16 16-14 28Z"/><path d="M100 70c-18-2-26-18-22-30 16 4 22 16 22 30Zm0 0c18-2 26-18 22-30-16 4-22 16-22 30Z"/><path d="M100 102c-18-2-26-18-22-30 16 4 22 16 22 30Zm0 0c18-2 26-18 22-30-16 4-22 16-22 30Z"/><path d="M100 134c-18-2-26-18-22-30 16 4 22 16 22 30Zm0 0c18-2 26-18 22-30-16 4-22 16-22 30Z"/></svg></div>
+      <div class="head"><h2>La <span class="it">vitrine</span></h2><p>Ce que vous trouvez chaque jour au comptoir, et ce que l'on prépare sur commande.</p></div>
+      <div class="shelf">
+        <article class="item"><span class="pick gold">dès 0,95 €</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M8 44 44 8c6-6 14 2 8 8L16 52c-6 6-14-2-8-8Z"/><path d="M20 36l6-6M28 28l6-6M36 20l6-6"/></svg>
+          <h3>Pains</h3><p>Baguettes et pains variés, tout au long de la journée.</p></article>
+        <article class="item"><span class="pick">le matin</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M6 40c4-14 14-22 26-22s22 8 26 22c-8 6-44 6-52 0Z"/><path d="M22 22l4 16M42 22l-4 16M32 18v20"/></svg>
+          <h3>Viennoiseries</h3><p>Croissants, pains au chocolat, pains aux raisins.</p></article>
+        <article class="item"><span class="pick">vitrine</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M10 30h44v22H10z"/><path d="M10 38h44"/><path d="M32 30c0-10 6-14 6-20M26 14c2 4 6 6 6 16"/></svg>
+          <h3>Pâtisseries</h3><p>Gâteaux et entremets, avec des options sans sucre.</p></article>
+        <article class="item"><span class="pick gold">dès 6,50 €</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M6 30c0-8 10-12 26-12s26 4 26 12Z"/><path d="M8 36h48M10 42c6 4 38 4 44 0"/></svg>
+          <h3>Formule déjeuner</h3><p>Sandwich, boisson et dessert pour la pause de midi.</p></article>
+        <article class="item"><span class="pick">sur commande</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><circle cx="18" cy="40" r="10"/><circle cx="44" cy="40" r="10"/><circle cx="31" cy="20" r="10"/></svg>
+          <h3>Petits-fours</h3><p>Sucrés ou salés, pour vos apéritifs et réceptions.</p></article>
+        <article class="item"><span class="pick">sur commande</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M14 56h36l-4-12H18Z"/><path d="M20 44l3-12h18l3 12M25 32l3-10h8l3 10M32 22v-8"/><circle cx="32" cy="11" r="3"/></svg>
+          <h3>Pièces montées</h3><p>Mariages, baptêmes et grandes occasions.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="order" id="commandes">
+    <div class="wrap">
       <div>
-        <h2>Vos fêtes, <em>sur commande</em></h2>
-        <p>Pièce montée, plateaux de petits-fours, chocolats de saison : parlez-nous de votre événement quelques jours à l&#x27;avance, on s&#x27;occupe du reste.</p>
+        <h2>Vos fêtes, <span class="it">sur commande</span></h2>
+        <p>Parlez-nous de votre événement quelques jours à l'avance : on prépare tout, vous n'avez plus qu'à venir chercher.</p>
+        <a class="btn" href="tel:+33143281609">Appeler pour commander</a>
       </div>
+      <ul>
+        <li><b>Pièces montées</b><span>mariages, baptêmes, communions</span></li>
+        <li><b>Petits-fours</b><span>sucrés et salés</span></li>
+        <li><b>Chocolats</b><span>à Noël et à Pâques</span></li>
+        <li><b>Traiteur</b><span>pour vos réceptions</span></li>
+      </ul>
     </div>
   </section>
 
-  <section class="block" id="avis">
-    <div class="wrap reviews">
-      <div>
-        <div class="label" style="margin-bottom:16px">Ce qu'en disent les clients</div>
-        <div class="score">5,0<small>/5</small></div><div class="label" style="margin-top:12px">Note PagesJaunes · 3 avis</div>
-      </div>
-      <div class="quotes">
-<figure><blockquote>«&nbsp;Le pain aux raisins, le croissant au chocolat aux amandes et la baguette blanche. Tous étaient bien exécutés.&nbsp;»</blockquote><figcaption>Avis client · PagesJaunes · mars 2019</figcaption></figure>
-<figure><blockquote>«&nbsp;Une femme très souriante, c&#x27;est très agréable, et le sandwich est bon.&nbsp;»</blockquote><figcaption>Avis client · PagesJaunes · novembre 2023</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="venir">
+  <section class="avis">
     <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="label" style="margin-bottom:14px">Horaires &amp; accès</div>
-          <h2>Sur l'avenue <em>de Paris</em></h2>
-        </div>
-        <p>Ouvert du lundi au vendredi, de 7h à 20h30.</p>
+      <div><div class="lbl">Avis PagesJaunes · 3 avis</div><div class="score">5<small>/5</small></div></div>
+      <div>
+        <figure><blockquote>«&nbsp;Le pain aux raisins, le croissant au chocolat aux amandes et la baguette blanche. Tous étaient bien exécutés.&nbsp;»</blockquote><figcaption>Avis client · mars 2019</figcaption></figure>
+        <figure><blockquote>«&nbsp;Une femme très souriante, c'est très agréable, et le sandwich est bon.&nbsp;»</blockquote><figcaption>Avis client · novembre 2023</figcaption></figure>
       </div>
-      <div class="visit">
-        <div class="hours-wrap">
-          <table class="hours" aria-label="Horaires d'ouverture">
-            <tbody id="hours">
-<tr data-d="1"><td>Lundi</td><td>07:00 – 20:30</td></tr>
-<tr data-d="2"><td>Mardi</td><td>07:00 – 20:30</td></tr>
-<tr data-d="3"><td>Mercredi</td><td>07:00 – 20:30</td></tr>
-<tr data-d="4"><td>Jeudi</td><td>07:00 – 20:30</td></tr>
-<tr data-d="5"><td>Vendredi</td><td>07:00 – 20:30</td></tr>
-<tr data-d="6" class="off"><td>Samedi</td><td>Fermé</td></tr>
-<tr data-d="0" class="off"><td>Dimanche</td><td>Fermé</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="contact">
-          <div>
-            <div class="label" style="margin-bottom:10px">Adresse</div>
-            <div class="big">39 avenue de Paris<br>94300 Vincennes</div>
-          </div>
-          
-          <div>
-            <div class="label" style="margin-bottom:10px">Téléphone</div>
-            <div class="phone-row">
-              <span class="phone" id="phone">01 43 28 16 09</span>
-              <button class="copy" id="copy" type="button">Copier</button>
-            </div>
-          </div>
-          <ul class="perks" aria-label="Infos pratiques"><li>Accès PMR</li><li>Titres-restaurant</li><li>Boissons à emporter</li></ul>
-          <div><a class="btn accent" href="https://www.google.com/maps/search/?api=1&query=O+Délices+de+Cérès+39+avenue+de+Paris+94300+Vincennes" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></div>
-        </div>
+    </div>
+  </section>
+
+  <section class="visit" id="venir">
+    <div class="wrap">
+      <div>
+        <h2>Horaires</h2>
+        <table aria-label="Horaires d'ouverture"><tbody>
+          <tr data-d="1"><td>Lundi</td><td>07:00 – 20:30</td></tr>
+          <tr data-d="2"><td>Mardi</td><td>07:00 – 20:30</td></tr>
+          <tr data-d="3"><td>Mercredi</td><td>07:00 – 20:30</td></tr>
+          <tr data-d="4"><td>Jeudi</td><td>07:00 – 20:30</td></tr>
+          <tr data-d="5"><td>Vendredi</td><td>07:00 – 20:30</td></tr>
+          <tr data-d="6" class="off"><td>Samedi</td><td>Fermé</td></tr>
+          <tr data-d="0" class="off"><td>Dimanche</td><td>Fermé</td></tr>
+        </tbody></table>
+      </div>
+      <div class="stack">
+        <div><div class="lbl">Adresse</div><div class="addr">39 avenue de Paris<br>94300 Vincennes</div></div>
+        <div><div class="lbl">Téléphone</div><div class="row"><span class="phone" id="phone">01 43 28 16 09</span><button class="btn line" type="button" data-copy="phone" style="padding:8px 14px;font-size:.8rem">Copier</button></div></div>
+        <ul class="chips"><li>Accès PMR</li><li>Titres-restaurant</li><li>Boissons à emporter</li></ul>
+        <div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=O+Delices+de+Ceres+39+avenue+de+Paris+94300+Vincennes" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></div>
       </div>
     </div>
   </section>
 </main>
-
-<footer class="site">
-  <div class="wrap">
-    <b>O Délices de Cérès</b>
-    <span>39 avenue de Paris, 94300 Vincennes · 01 43 28 16 09</span>
-    
-    <span>Boulangerie-pâtisserie depuis 2014</span>
-  </div>
-</footer>
-
+<footer><div class="wrap"><span>O Délices de Cérès · 39 avenue de Paris, 94300 Vincennes</span><span>Boulangerie-pâtisserie depuis 2014</span></div></footer>
 <script>
-  // Ouvert / fermé, à l'heure de Paris (créneaux en minutes ; une fin > 1440 déborde sur le lendemain)
+  window.SLOTS = {1:[[420,1230]],2:[[420,1230]],3:[[420,1230]],4:[[420,1230]],5:[[420,1230]]};
   (function () {
-    var slots = {"1": [[420, 1230]], "2": [[420, 1230]], "3": [[420, 1230]], "4": [[420, 1230]], "5": [[420, 1230]]};
-    var s = document.getElementById('status');
-    if (!s) return;
     var p = {};
-    try {
-      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false })
-        .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
-    } catch (e) {}
-    var map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-    var now = new Date();
-    var d = p.weekday in map ? map[p.weekday] : now.getDay();
-    var m = p.hour ? (+p.hour % 24) * 60 + +p.minute : now.getHours() * 60 + now.getMinutes();
-    function day(n) { return slots[String((n + 7) % 7)] || []; }
-    function hm(v) { if (v === 1440) return 'minuit'; v = v % 1440; var h = Math.floor(v / 60), mm = v % 60; return h + 'h' + (mm ? (mm < 10 ? '0' : '') + mm : ''); }
-    var cur = null;
-    day(d).forEach(function (r) { if (m >= r[0] && m < r[1]) cur = r; });
-    day(d - 1).forEach(function (r) { if (r[1] > 1440 && m + 1440 < r[1]) cur = r; });
-    if (cur) { s.className = 'status open'; s.textContent = 'Ouvert · jusqu\'à ' + hm(cur[1]); }
-    else {
-      var txt = null;
-      day(d).forEach(function (r) { if (!txt && m < r[0]) txt = 'ouvre à ' + hm(r[0]); });
-      if (!txt) {
-        var names = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-        for (var k = 1; k <= 7; k++) {
-          var nd = (d + k) % 7;
-          if (day(nd).length) { txt = 'ouvre ' + (k === 1 ? 'demain' : names[nd]) + ' à ' + hm(day(nd)[0][0]); break; }
-        }
-      }
-      s.className = 'status shut'; s.textContent = 'Fermé · ' + txt;
+    try { new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; }); } catch (e) {}
+    var m = p.hour ? (+p.hour % 24) * 60 + +p.minute : new Date().getHours() * 60 + new Date().getMinutes();
+    var weekend = p.weekday ? (p.weekday === 'Sat' || p.weekday === 'Sun') : [0, 6].indexOf(new Date().getDay()) > -1;
+    if (!weekend && m >= 420 && m <= 1230) {
+      var mark = document.getElementById('mark');
+      mark.style.left = ((m - 420) / (1230 - 420) * 100) + '%';
+      mark.setAttribute('data-label', 'Maintenant · ' + Math.floor(m / 60) + 'h' + ('0' + m % 60).slice(-2));
+      mark.hidden = false;
     }
-    var row = document.querySelector('#hours tr[data-d="' + d + '"]');
-    if (row) row.classList.add('today');
   })();
-
-  document.getElementById('copy').addEventListener('click', function () {
-    var btn = this, el = document.getElementById('phone');
-    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copier'; }, 1800); }
-    function fallback() {
-      var r = document.createRange(); r.selectNodeContents(el);
-      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
-      done('Sélectionné');
+</script>
+<script>
+(function () {
+  // Ouvert / fermé à l'heure de Paris. SLOTS = {jour: [[début, fin], ...]} en minutes ; fin > 1440 = après minuit.
+  var slots = window.SLOTS || {};
+  var p = {};
+  try {
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false })
+      .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+  } catch (e) {}
+  var M = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }, n = new Date();
+  var d = p.weekday in M ? M[p.weekday] : n.getDay();
+  var m = p.hour ? (+p.hour % 24) * 60 + +p.minute : n.getHours() * 60 + n.getMinutes();
+  function day(k) { return slots[(k + 7) % 7] || []; }
+  function hm(v) { if (v === 1440) return 'minuit'; v %= 1440; var h = Math.floor(v / 60), mm = v % 60; return h + 'h' + (mm ? (mm < 10 ? '0' : '') + mm : ''); }
+  var cur = null;
+  day(d).forEach(function (r) { if (m >= r[0] && m < r[1]) cur = r; });
+  day(d - 1).forEach(function (r) { if (r[1] > 1440 && m + 1440 < r[1]) cur = r; });
+  var open = !!cur, txt;
+  if (open) txt = 'Ouvert · jusqu’à ' + hm(cur[1]);
+  else {
+    var t = null;
+    day(d).forEach(function (r) { if (!t && m < r[0]) t = 'ouvre à ' + hm(r[0]); });
+    if (!t) {
+      var N = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+      for (var k = 1; k <= 7; k++) { var nd = (d + k) % 7; if (day(nd).length) { t = 'ouvre ' + (k === 1 ? 'demain' : N[nd]) + ' à ' + hm(day(nd)[0][0]); break; } }
     }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.textContent).then(function () { done('Copié'); }, fallback);
-    else fallback();
+    txt = 'Fermé · ' + t;
+  }
+  if (Object.keys(slots).length) {
+    document.querySelectorAll('[data-status]').forEach(function (s) { s.classList.add(open ? 'open' : 'shut'); s.textContent = txt; });
+    document.documentElement.classList.add(open ? 'is-open' : 'is-closed');
+  }
+  document.querySelectorAll('[data-d="' + d + '"]').forEach(function (r) { r.classList.add('today'); });
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-copy')), label = btn.textContent;
+      function done(x) { btn.textContent = x; setTimeout(function () { btn.textContent = label; }, 1800); }
+      function fb() { var r = document.createRange(); r.selectNodeContents(el); var S = getSelection(); S.removeAllRanges(); S.addRange(r); done('Sélectionné'); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.textContent.trim()).then(function () { done('Copié'); }, fb);
+      else fb();
+    });
   });
+})();
 </script>
 </body>
 </html>
